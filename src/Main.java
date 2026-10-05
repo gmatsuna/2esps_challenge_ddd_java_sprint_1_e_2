@@ -1,5 +1,6 @@
 import models.*;
-
+import services.*;
+import exceptions.ManutencaoException;
 import java.time.LocalDate;
 
 public class Main {
@@ -37,7 +38,21 @@ public class Main {
                 tecnico01
         );
 
-        System.out.println(ordem01);
+        ComponenteService componenteService = new ComponenteService();
 
+        boolean limiteAtingido = componenteService.verificarLimiteHoras(correnteDegrau);
+        String alerta = componenteService.gerarAlertaManutencao(correnteDegrau);
+
+        try {
+            ProcessadorServicoManutencao processador = new ProcessadorCorretiva();
+
+            System.out.println("=== Iniciando Processamento de Ordem de Serviço ===");
+            processador.processarManutencao(ordem01);
+
+        } catch (ManutencaoException e) {
+            System.err.println("Erro de Negócio: " + e.getMessage());
+        } catch (Exception e) {
+            System.err.println("Erro inesperado: " + e.getMessage());
+        }
     }
 }
