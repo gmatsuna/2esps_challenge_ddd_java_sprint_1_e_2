@@ -1,21 +1,27 @@
 package models;
 
+/**
+ * Define as linhas de transporte metroviário administradas pela Motiva,
+ * servindo de referência para a localização das estações e equipamentos.
+ *
+ * @author Gilberto Hideaki Matsunaga
+ * @version 1.0
+ * @since 2026-10
+ */
 public enum LinhaMotiva {
-    LINHA_4_AMARELA("Linha 4-Amarela"),
-    LINHA_5_LILAS("Linha 5-Lilás"),
-    LINHA_8_DIAMANTE("Linha 8-Diamante"),
-    LINHA_9_ESMERALDA("Linha 9-Esmeralda"),
-    LINHA_17_OURO("Linha 17-Ouro");
 
-    private final String descricao;
+    /** Linha 4 - Amarela */
+    LINHA_4_AMARELA,
 
-    // Construtor do Enum (responsável por aceitar o texto)
-    LinhaMotiva(String descricao) {
-        this.descricao = descricao;
-    }
+    /** Linha 5 - Lilás */
+    LINHA_5_LILAS,
 
-    // Getter para recuperar o texto formatado
-    public String getDescricao() {
-        return descricao;
-    }
+    /** Linha 8 - Diamante */
+    LINHA_8_DIAMANTE,
+
+    /** Linha 9 - Esmeralda */
+    LINHA_9_ESMERALDA,
+
+    /** Linha 17 - Ouro */
+    LINHA_17_OURO
 }

@@ -1,58 +1,88 @@
+package main;
+
 import models.*;
 import services.*;
-import exceptions.ManutencaoException;
+
 import java.time.LocalDate;
 
+/**
+ * Classe principal responsável por instanciar e demonstrar o funcionamento
+ * de todos os objetos do sistema de gerenciamento de escadas rolantes (Motiva/CCR),
+ * imprimindo seus dados via toString() e testando os serviços de manutenção.
+ *
+ * @author Gilberto Hideaki Matsunaga
+ * @version 1.0
+ * @since 2026-10
+ */
 public class Main {
+
+    /**
+     * Método principal que executa a aplicação de demonstração.
+     *
+     * @param args Argumentos de linha de comando (não utilizados)
+     */
     public static void main(String[] args) {
-        Estacao estacaoPinheiros = new Estacao(1, "Pinheiros", LinhaMotiva.LINHA_4_AMARELA);
+        System.out.println("==================================================");
+        System.out.println("   SISTEMA DE GERENCIAMENTO DE ESCADAS ROLANTES   ");
+        System.out.println("          MOTIVA / CCR - DESAFIO FIAP             ");
+        System.out.println("==================================================\n");
 
-        EscadaRolante escada01 = new EscadaRolante(
-                1001,
-                "ER-PIN-01",
-                SentidoEscada.SUBIDA,
-                StatusOperacional.OPERACIONAL,
-                estacaoPinheiros
-        );
+        // 1. Instanciando Enums
+        LinhaMotiva linha = LinhaMotiva.LINHA_4_AMARELA;
+        SentidoEscada sentido = SentidoEscada.SUBIDA;
+        StatusOperacional status = StatusOperacional.OPERACIONAL;
+        EspecialidadeTecnico especialidade = EspecialidadeTecnico.MECANICA;
+        TipoServico tipoServico = TipoServico.PREVENTIVA;
 
-        ComponenteMecanico correnteDegrau = new ComponenteMecanico(
-                5001,
-                "Corrente Principal de Degraus",
-                18500.00,
-                20000.00,
-                escada01
-        );
+        // 2. Instanciando Estação
+        Estacao estacao = new Estacao(101, "Estação Paulista", linha);
+        System.out.println("🔹 Estação Instanciada:");
+        System.out.println(estacao.toString() + "\n");
 
-        TecnicoManutencao tecnico01 = new TecnicoManutencao(
-                1,
-                "Gilberto",
-                "123.456.789-00",
-                EspecialidadeTecnico.MECANICA
-        );
+        // 3. Instanciando Escada Rolante
+        EscadaRolante escada = new EscadaRolante(1, "PAT-ESC-4045", sentido, status, estacao);
+        System.out.println("🔹 Escada Rolante Instanciada:");
+        System.out.println(escada.toString() + "\n");
 
-        OrdemServico ordem01 = new OrdemServico(
-                1005,
-                LocalDate.of(2020, 1, 1),
-                TipoServico.PREVENTIVA,
-                escada01,
-                tecnico01
-        );
+        // 4. Instanciando Componente Mecânico
+        ComponenteMecanico componente = new ComponenteMecanico(501, "Corrente de Degraus", 4200.0, 5000.0, escada);
+        System.out.println("🔹 Componente Mecânico Instanciado:");
+        System.out.println(componente.toString() + "\n");
 
+        // 5. Instanciando Técnico de Manutenção
+        TecnicoManutencao tecnico = new TecnicoManutencao(10, "Gilberto", "123.456.789-00", especialidade);
+        System.out.println("🔹 Técnico de Manutenção Instanciado:");
+        System.out.println(tecnico.toString() + "\n");
+
+        // 6. Instanciando Ordem de Serviço
+        OrdemServico ordem = new OrdemServico(9910, LocalDate.now(), tipoServico, escada, tecnico);
+        System.out.println("🔹 Ordem de Serviço Instanciada:");
+        System.out.println(ordem.toString() + "\n");
+
+        System.out.println("==================================================");
+        System.out.println("          DEMONSTRAÇÃO DOS SERVIÇOS               ");
+        System.out.println("==================================================");
+
+        // Testando ComponenteService
         ComponenteService componenteService = new ComponenteService();
+        System.out.println(componenteService.gerarAlertaManutencao(componente));
 
-        boolean limiteAtingido = componenteService.verificarLimiteHoras(correnteDegrau);
-        String alerta = componenteService.gerarAlertaManutencao(correnteDegrau);
+        boolean limiteAtingido = componenteService.verificarLimiteHoras(componente);
+        System.out.println("-> Limite de horas atingido? " + (limiteAtingido ? "Sim" : "Não") + "\n");
 
-        try {
-            ProcessadorServicoManutencao processador = new ProcessadorCorretiva();
+        // Testando Processadores de Manutenção (Polimorfismo)
+        ProcessadorServicoManutencao processadorPreventiva = new ProcessadorPreventiva();
+        processadorPreventiva.processarManutencao(ordem);
 
-            System.out.println("=== Iniciando Processamento de Ordem de Serviço ===");
-            processador.processarManutencao(ordem01);
+        System.out.println("\n--------------------------------------------------");
 
-        } catch (ManutencaoException e) {
-            System.err.println("Erro de Negócio: " + e.getMessage());
-        } catch (Exception e) {
-            System.err.println("Erro inesperado: " + e.getMessage());
-        }
+        // Simulando Ordem Corretiva
+        OrdemServico ordemCorretiva = new OrdemServico(9911, LocalDate.now(), TipoServico.CORRETIVA, escada, tecnico);
+        ProcessadorServicoManutencao processadorCorretiva = new ProcessadorCorretiva();
+        processadorCorretiva.processarManutencao(ordemCorretiva);
+
+        System.out.println("\n==================================================");
+        System.out.println(" FIM DA EXECUÇÃO - OBJETOS TESTADOS COM SUCESSO!  ");
+        System.out.println("==================================================");
     }
 }
