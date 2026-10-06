@@ -63,6 +63,11 @@ public class Main {
         System.out.println("          DEMONSTRAÇÃO DOS SERVIÇOS               ");
         System.out.println("==================================================");
 
+        // Testando EscadaRolanteService
+        EscadaRolanteService escadaRolanteService = new EscadaRolanteService();
+        escadaRolanteService.alterarStatusOperacional(escada, StatusOperacional.MANUTENCAO);
+        System.out.println();
+
         // Testando ComponenteService
         ComponenteService componenteService = new ComponenteService();
         System.out.println(componenteService.gerarAlertaManutencao(componente));
@@ -70,16 +75,20 @@ public class Main {
         boolean limiteAtingido = componenteService.verificarLimiteHoras(componente);
         System.out.println("-> Limite de horas atingido? " + (limiteAtingido ? "Sim" : "Não") + "\n");
 
-        // Testando Processadores de Manutenção (Polimorfismo)
-        ProcessadorServicoManutencao processadorPreventiva = new ProcessadorPreventiva();
-        processadorPreventiva.processarManutencao(ordem);
+        // Testando OrdemServicoService (Emissão e Processamento Polimórfico)
+        OrdemServicoService ordemServicoService = new OrdemServicoService();
+
+        // Emitindo e processando Ordem Preventiva
+        OrdemServico ordemPreventiva = ordemServicoService.emitirOrdem(9910, LocalDate.now(), TipoServico.PREVENTIVA, escada, tecnico);
+        System.out.println("🔹 " + ordemPreventiva.toString());
+        ordemServicoService.processarOrdemPolimorfica(ordemPreventiva);
 
         System.out.println("\n--------------------------------------------------");
 
-        // Simulando Ordem Corretiva
-        OrdemServico ordemCorretiva = new OrdemServico(9911, LocalDate.now(), TipoServico.CORRETIVA, escada, tecnico);
-        ProcessadorServicoManutencao processadorCorretiva = new ProcessadorCorretiva();
-        processadorCorretiva.processarManutencao(ordemCorretiva);
+        // Emitindo e processando Ordem Corretiva
+        OrdemServico ordemCorretiva = ordemServicoService.emitirOrdem(9911, LocalDate.now(), TipoServico.CORRETIVA, escada, tecnico);
+        System.out.println("🔹 " + ordemCorretiva.toString());
+        ordemServicoService.processarOrdemPolimorfica(ordemCorretiva);
 
         System.out.println("\n==================================================");
         System.out.println(" FIM DA EXECUÇÃO - OBJETOS TESTADOS COM SUCESSO!  ");
