@@ -8,13 +8,7 @@ package models;
  * @since 2026-10
  */
 public enum SentidoEscada {
-
-    /** Sentido ascendente (subida). */
     SUBIDA,
-
-    /** Sentido descendente (descida). */
     DESCIDA,
-
-    /** Equipamento temporariamente parado. */
     PARADA
 }

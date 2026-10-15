@@ -18,17 +18,33 @@ public abstract class ProcessadorServicoManutencao {
      * com a escada rolante e com o técnico responsável.
      *
      * @param ordem A ordem de serviço a ser validada
+     * @see OrdemServico
      * @throws ManutencaoException se a ordem for nula, estiver sem escada rolante ou sem técnico responsável
      */
     public void validarOrdem(OrdemServico ordem) {
-        if (ordem == null) {
-            throw new ManutencaoException("Erro: A ordem de serviço não pode ser nula.");
-        }
-        if (ordem.getEscadaRolante() == null) {
-            throw new ManutencaoException("Erro: A ordem de serviço precisa estar vinculada a uma escada rolante.");
-        }
-        if (ordem.getTecnicoManutencao() == null) {
-            throw new ManutencaoException("Erro: A ordem de serviço precisa ter um técnico responsável.");
+        try {
+            // Validação da instância da ordem de serviço
+            if (ordem == null) {
+                throw new ManutencaoException("Erro: A ordem de serviço não pode ser nula.");
+            }
+
+            // Validação da associação obrigatória com o equipamento
+            if (ordem.getEscadaRolante() == null) {
+                throw new ManutencaoException("Erro: A ordem de serviço precisa estar vinculada a uma escada rolante.");
+            }
+
+            // Validação da associação obrigatória com o técnico responsável
+            if (ordem.getTecnicoManutencao() == null) {
+                throw new ManutencaoException("Erro: A ordem de serviço precisa ter um técnico responsável.");
+            }
+
+        } catch (ManutencaoException manutencaoException) {
+            // Relança a exceção customizada de manutenção para tratamento na camada superior
+            throw manutencaoException;
+
+        } catch (Exception exception) {
+            // Captura falhas inesperadas durante o processo de validação da ordem
+            System.out.println("Erro ao validar ordem de serviço: " + exception.getMessage());
         }
     }
 
@@ -36,7 +52,8 @@ public abstract class ProcessadorServicoManutencao {
      * Métod0 abstrato responsável por executar o processamento específico da manutenção.
      * Deve ser implementado pelas subclasses conforme o tipo de serviço.
      *
-     * @param ordem A ordem de serviço a ser processada
+     * @param ordem O objeto do tipo OrdemServico a ser processado
+     * @see OrdemServico
      */
     public abstract void processarManutencao(OrdemServico ordem);
 }

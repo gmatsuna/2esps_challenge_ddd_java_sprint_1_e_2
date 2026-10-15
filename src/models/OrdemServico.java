@@ -12,21 +12,35 @@ import java.time.LocalDate;
  * @since 2026-10
  */
 public class OrdemServico {
+
+    /** Propriedade do tipo int - Identificador único da ordem de serviço. */
     private int idOrdemServico;
+
+    /** Propriedade do tipo LocalDate - Data em que a ordem de serviço foi emitida. */
     private LocalDate dataOrdemServico;
-    private TipoServico tipoOrdemServico;
-    private EscadaRolante escadaRolante;
-    private TecnicoManutencao tecnicoManutencao;
 
     /**
-     * Construtor da classe OrdemServico.
+     * Propriedade do tipo TipoServico - Tipo de serviço a ser executado.
      *
-     * @param idOrdemServico Identificador único da ordem de serviço
-     * @param dataOrdemServico Data em que a ordem de serviço foi emitida
-     * @param tipoOrdemServico Tipo de serviço a ser executado (instância de TipoServico)
-     * @param escadaRolante Escada rolante alvo da manutenção
-     * @param tecnicoManutencao Técnico encarregado pela execução do serviço
+     * @see TipoServico
      */
+    private TipoServico tipoOrdemServico;
+
+    /**
+     * Propriedade do tipo EscadaRolante - Escada rolante alvo da manutenção.
+     *
+     * @see EscadaRolante
+     */
+    private EscadaRolante escadaRolante;
+
+    /**
+     * Propriedade do tipo TecnicoManutencao - Técnico encarregado pela execução do serviço.
+     *
+     * @see TecnicoManutencao
+     */
+    private TecnicoManutencao tecnicoManutencao;
+
+    // Construtores
     public OrdemServico(int idOrdemServico, LocalDate dataOrdemServico, TipoServico tipoOrdemServico, EscadaRolante escadaRolante, TecnicoManutencao tecnicoManutencao) {
         this.idOrdemServico = idOrdemServico;
         this.dataOrdemServico = dataOrdemServico;
@@ -35,101 +49,48 @@ public class OrdemServico {
         this.tecnicoManutencao = tecnicoManutencao;
     }
 
-    /**
-     * Retorna o identificador único da ordem de serviço.
-     *
-     * @return O ID da ordem de serviço
-     */
+    // Getters
     public int getIdOrdemServico() {
         return idOrdemServico;
     }
 
-    /**
-     * Retorna a data de emissão da ordem de serviço.
-     *
-     * @return A data da ordem de serviço
-     */
     public LocalDate getDataOrdemServico() {
         return dataOrdemServico;
     }
 
-    /**
-     * Retorna o tipo de serviço da ordem.
-     *
-     * @return O tipo de serviço (instância de TipoServico)
-     */
     public TipoServico getTipoOrdemServico() {
         return tipoOrdemServico;
     }
 
-    /**
-     * Retorna a escada rolante associada à ordem de serviço.
-     *
-     * @return O objeto EscadaRolante vinculado
-     */
     public EscadaRolante getEscadaRolante() {
         return escadaRolante;
     }
 
-    /**
-     * Retorna o técnico responsável pelo atendimento.
-     *
-     * @return O objeto TecnicoManutencao responsável
-     */
     public TecnicoManutencao getTecnicoManutencao() {
         return tecnicoManutencao;
     }
 
-    /**
-     * Define o identificador único da ordem de serviço.
-     *
-     * @param idOrdemServico O novo ID da ordem de serviço
-     */
+    // Setters
     public void setIdOrdemServico(int idOrdemServico) {
         this.idOrdemServico = idOrdemServico;
     }
 
-    /**
-     * Define a data da ordem de serviço.
-     *
-     * @param dataOrdemServico A nova data de emissão
-     */
     public void setDataOrdemServico(LocalDate dataOrdemServico) {
         this.dataOrdemServico = dataOrdemServico;
     }
 
-    /**
-     * Define o tipo de serviço da ordem.
-     *
-     * @param tipoOrdemServico O novo tipo de serviço (instância de TipoServico)
-     */
     public void setTipoOrdemServico(TipoServico tipoOrdemServico) {
         this.tipoOrdemServico = tipoOrdemServico;
     }
 
-    /**
-     * Define a escada rolante associada à ordem de serviço.
-     *
-     * @param escadaRolante O novo objeto EscadaRolante vinculado
-     */
     public void setEscadaRolante(EscadaRolante escadaRolante) {
         this.escadaRolante = escadaRolante;
     }
 
-    /**
-     * Define o técnico responsável pela ordem de serviço.
-     *
-     * @param tecnicoManutencao O novo objeto TecnicoManutencao responsável
-     */
     public void setTecnicoManutencao(TecnicoManutencao tecnicoManutencao) {
         this.tecnicoManutencao = tecnicoManutencao;
     }
 
-    /**
-     * Retorna uma representação em formato de texto (String) da ordem de serviço.
-     *
-     * @return Uma String contendo todos os atributos e valores da ordem de serviço
-     */
     @Override
     public String toString() {
         return "OrdemServico{" +

@@ -10,19 +10,24 @@ package models;
  * @since 2026-10
  */
 public class TecnicoManutencao {
+
+    /** Propriedade do tipo int - Identificador único do técnico. */
     private int idTecManutencao;
+
+    /** Propriedade do tipo String - Nome completo do técnico de manutenção. */
     private String nomeTecManutencao;
+
+    /** Propriedade do tipo String - Número de CPF do técnico. */
     private String cpfTecManutencao;
-    private EspecialidadeTecnico especialidadeTecManutencao;
 
     /**
-     * Construtor da classe TecnicoManutencao.
+     * Propriedade do tipo EspecialidadeTecnico - Especialidade técnica principal do profissional.
      *
-     * @param idTecManutencao Identificador único do técnico
-     * @param nomeTecManutencao Nome completo do técnico de manutenção
-     * @param cpfTecManutencao Número de CPF do técnico
-     * @param especialidadeTecManutencao Especialidade técnica principal do profissional (instância de EspecialidadeTecnico)
+     * @see EspecialidadeTecnico
      */
+    private EspecialidadeTecnico especialidadeTecManutencao;
+
+    // Construtores
     public TecnicoManutencao(int idTecManutencao, String nomeTecManutencao, String cpfTecManutencao, EspecialidadeTecnico especialidadeTecManutencao) {
         this.idTecManutencao = idTecManutencao;
         this.nomeTecManutencao = nomeTecManutencao;
@@ -30,83 +35,40 @@ public class TecnicoManutencao {
         this.especialidadeTecManutencao = especialidadeTecManutencao;
     }
 
-    /**
-     * Retorna o identificador único do técnico.
-     *
-     * @return O ID do técnico de manutenção
-     */
+    // Getters
     public int getIdTecManutencao() {
         return idTecManutencao;
     }
 
-    /**
-     * Retorna o nome completo do técnico.
-     *
-     * @return O nome do técnico de manutenção
-     */
     public String getNomeTecManutencao() {
         return nomeTecManutencao;
     }
 
-    /**
-     * Retorna o CPF do técnico.
-     *
-     * @return O CPF cadastrado do técnico
-     */
     public String getCpfTecManutencao() {
         return cpfTecManutencao;
     }
 
-    /**
-     * Retorna a especialidade técnica do profissional.
-     *
-     * @return A especialidade (instância de EspecialidadeTecnico)
-     */
     public EspecialidadeTecnico getEspecialidadeTecManutencao() {
         return especialidadeTecManutencao;
     }
 
-    /**
-     * Define o identificador único do técnico.
-     *
-     * @param idTecManutencao O novo ID do técnico de manutenção
-     */
+    // Setters
     public void setIdTecManutencao(int idTecManutencao) {
         this.idTecManutencao = idTecManutencao;
     }
 
-    /**
-     * Define o nome completo do técnico.
-     *
-     * @param nomeTecManutencao O novo nome do técnico de manutenção
-     */
     public void setNomeTecManutencao(String nomeTecManutencao) {
         this.nomeTecManutencao = nomeTecManutencao;
     }
 
-    /**
-     * Define o CPF do técnico.
-     *
-     * @param cpfTecManutencao O novo CPF do técnico
-     */
     public void setCpfTecManutencao(String cpfTecManutencao) {
         this.cpfTecManutencao = cpfTecManutencao;
     }
 
-    /**
-     * Define a especialidade técnica do profissional.
-     *
-     * @param especialidadeTecManutencao A nova especialidade (instância de EspecialidadeTecnico)
-     */
     public void setEspecialidadeTecManutencao(EspecialidadeTecnico especialidadeTecManutencao) {
         this.especialidadeTecManutencao = especialidadeTecManutencao;
     }
 
-    /**
-     * Retorna uma representação em formato de texto (String) do técnico de manutenção.
-     *
-     * @return Uma String contendo todos os atributos e valores do técnico
-     */
     @Override
     public String toString() {
         return "TecnicoManutencao{" +

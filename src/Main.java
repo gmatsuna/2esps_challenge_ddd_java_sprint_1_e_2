@@ -5,22 +5,8 @@ import services.*;
 
 import java.time.LocalDate;
 
-/**
- * Classe principal responsável por instanciar e demonstrar o funcionamento
- * de todos os objetos do sistema de gerenciamento de escadas rolantes (Motiva/CCR),
- * imprimindo seus dados via toString() e testando os serviços de manutenção.
- *
- * @author Gilberto Hideaki Matsunaga
- * @version 1.0
- * @since 2026-10
- */
 public class Main {
 
-    /**
-     * Método principal que executa a aplicação de demonstração.
-     *
-     * @param args Argumentos de linha de comando (não utilizados)
-     */
     public static void main(String[] args) {
         System.out.println("==================================================");
         System.out.println("   SISTEMA DE GERENCIAMENTO DE ESCADAS ROLANTES   ");
@@ -70,10 +56,14 @@ public class Main {
 
         // Testando ComponenteService
         ComponenteService componenteService = new ComponenteService();
-        System.out.println(componenteService.gerarAlertaManutencao(componente));
 
-        boolean limiteAtingido = componenteService.verificarLimiteHoras(componente);
-        System.out.println("-> Limite de horas atingido? " + (limiteAtingido ? "Sim" : "Não") + "\n");
+        try {
+            System.out.println(componenteService.gerarAlertaManutencao(componente));
+            boolean limiteAtingido = componenteService.verificarLimiteHoras(componente);
+            System.out.println("-> Limite de horas atingido? " + (limiteAtingido ? "Sim" : "Não") + "\n");
+        } catch (Exception e) {
+            System.out.println("Erro na execução: " + e.getMessage());
+        }
 
         // Testando OrdemServicoService (Emissão e Processamento Polimórfico)
         OrdemServicoService ordemServicoService = new OrdemServicoService();

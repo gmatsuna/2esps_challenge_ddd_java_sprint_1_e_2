@@ -8,27 +8,26 @@ package models;
  * @version 1.0
  * @since 2026-10
  */
-
 public class ComponenteMecanico {
 
-    //Propriedades
+    /** Propriedade do tipo INT - Identificador único do componente mecânico. */
     private int idComponente;
+
+    /** Propriedade do tipo String - Nome descritivo do componente mecânico (ex: Degrau, Corrimão, Corrente). */
     private String nomeComponente;
+
+    /** Propriedade do tipo double (somente tempo) - Quantidade de horas de operação acumuladas pelo componente. */
     private double horasOperacao;
+
+    /** Propriedade do tipo double (somente tempo) - Limite máximo de horas de operação permitido antes da manutenção recomendada. */
     private double limiteMaxHoras;
+
+    /** Propriedade do tipo EscadaRolante - Escada rolante à qual este componente está vinculado.
+     * @see EscadaRolante
+     */
     private EscadaRolante escadaRolante;
 
-    /**
-     * Construtor da classe ComponenteMecanico.
-     *
-     * @param idComponente Identificador único do componente
-     * @param nomeComponente Nome descritivo do componente mecânico
-     * @param horasOperacao Quantidade de horas de operação acumuladas
-     * @param limiteMaxHoras Limite máximo de horas antes da manutenção recomendada
-     * @param escadaRolante Escada rolante à qual este componente pertence
-     */
-
-    //Contrutores
+    // Construtores
     public ComponenteMecanico(int idComponente, String nomeComponente, double horasOperacao, double limiteMaxHoras, EscadaRolante escadaRolante) {
         this.idComponente = idComponente;
         this.nomeComponente = nomeComponente;
@@ -37,103 +36,48 @@ public class ComponenteMecanico {
         this.escadaRolante = escadaRolante;
     }
 
-    //Getters
-    /**
-     * Retorna o identificador do componente.
-     *
-     * @return ID do componente
-     */
+    // Getters
     public int getIdComponente() {
         return idComponente;
     }
 
-    /**
-     * Retorna o nome do componente.
-     *
-     * @return Nome do componente
-     */
     public String getNomeComponente() {
         return nomeComponente;
     }
 
-    /**
-     * Retorna as horas de operação atuais.
-     *
-     * @return As horas de operação acumuladas
-     */
     public double getHorasOperacao() {
         return horasOperacao;
     }
 
-    /**
-     * Retorna o limite máximo de horas de operação.
-     *
-     * @return O limite máximo de horas
-     */
     public double getLimiteMaxHoras() {
         return limiteMaxHoras;
     }
 
-    /**
-     * Retorna a escada rolante associada ao componente.
-     *
-     * @return O objeto EscadaRolante vinculado
-     */
     public EscadaRolante getEscadaRolante() {
         return escadaRolante;
     }
 
-    //Setters
-    /**
-     * Define o identificador do componente.
-     *
-     * @param idComponente Novo ID do componente
-     */
+    // Setters
     public void setIdComponente(int idComponente) {
         this.idComponente = idComponente;
     }
 
-    /**
-     * Define o nome do componente.
-     *
-     * @param nomeComponente Novo nome do componente
-     */
     public void setNomeComponente(String nomeComponente) {
         this.nomeComponente = nomeComponente;
     }
 
-    /**
-     * Define as horas de operação do componente.
-     *
-     * @param horasOperacao As novas horas de operação acumuladas
-     */
     public void setHorasOperacao(double horasOperacao) {
         this.horasOperacao = horasOperacao;
     }
 
-    /**
-     * Define o limite máximo de horas de operação.
-     *
-     * @param limiteMaxHoras O novo limite máximo de horas
-     */
     public void setLimiteMaxHoras(double limiteMaxHoras) {
         this.limiteMaxHoras = limiteMaxHoras;
     }
 
-    /**
-     * Define a escada rolante associada ao componente.
-     *
-     * @param escadaRolante O novo objeto EscadaRolante vinculado
-     */
     public void setEscadaRolante(EscadaRolante escadaRolante) {
         this.escadaRolante = escadaRolante;
     }
 
-    /**
-     * Retorna uma representação em formato de texto (String) do componente mecânico.
-     *
-     * @return Uma String contendo os atributos e valores do componente
-     */
     @Override
     public String toString() {
         return "ComponenteMecanico{" +

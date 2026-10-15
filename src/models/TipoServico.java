@@ -9,13 +9,7 @@ package models;
  * @since 2026-10
  */
 public enum TipoServico {
-
-    /** Manutenção preventiva programada para evitar desgastes e falhas futuras. */
     PREVENTIVA,
-
-    /** Manutenção corretiva realizada após a ocorrência de uma falha ou pane no equipamento. */
     CORRETIVA,
-
-    /** Manutenção preditiva baseada no monitoramento contínuo das horas de operação e desempenho. */
     PREDITIVA
 }
