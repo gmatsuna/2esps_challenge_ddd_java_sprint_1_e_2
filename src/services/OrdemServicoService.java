@@ -11,7 +11,7 @@ import java.time.LocalDate;
  * Serviço responsável pela gestão de ordens de serviço do sistema Motiva,
  * orquestrando a emissão e o processamento das manutenções.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Giovanna Pellegrino Zagaroli
  * @version 1.0
  * @since 2026-10
  */

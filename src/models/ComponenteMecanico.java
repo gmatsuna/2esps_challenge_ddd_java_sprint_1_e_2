@@ -4,7 +4,7 @@ package models;
  * Representa um componente mecânico de uma escada rolante, monitorando suas horas
  * de operação e limites máximos para manutenção preditiva.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Bruno Ventura
  * @version 1.0
  * @since 2026-10
  */

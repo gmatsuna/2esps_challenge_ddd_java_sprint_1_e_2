@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * em uma escada rolante, vinculando a data, o tipo de serviço,
  * qual escada rolante e o técnico responsável.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Vinicius Nathan
  * @version 1.0
  * @since 2026-10
  */

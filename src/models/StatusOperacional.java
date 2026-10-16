@@ -4,7 +4,7 @@ package models;
  * Define os estados operacionais possíveis de uma escada rolante,
  * indicando se está funcionando, em manutenção ou apresentando falhas.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Vinicius Nathan
  * @version 1.0
  * @since 2026-10
  */

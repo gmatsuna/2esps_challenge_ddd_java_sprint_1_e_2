@@ -4,7 +4,7 @@ package models;
  * Representa uma estação do sistema de transporte metroviário administrada pela Motiva,
  * identificando seu nome e linha operacional.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Giovanna Pellegrino Zagaroli
  * @version 1.0
  * @since 2026-10
  */

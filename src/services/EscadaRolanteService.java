@@ -7,7 +7,7 @@ import models.StatusOperacional;
  * Serviço responsável pelas regras de controle operacional das escadas rolantes,
  * gerenciando alterações de status e liberação para uso no sistema metroviário.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Diogo Henrique Alves Magalhães
  * @version 1.0
  * @since 2026-10
  */

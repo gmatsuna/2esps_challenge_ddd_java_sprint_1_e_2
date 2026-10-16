@@ -7,7 +7,7 @@ import models.OrdemServico;
  * Classe abstrata base para o processamento de ordens de serviço de manutenção,
  * estabelecendo o contrato de validação e o métod0 de execução para as subclasses.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Vinicius Nathan
  * @version 1.0
  * @since 2026-10
  */

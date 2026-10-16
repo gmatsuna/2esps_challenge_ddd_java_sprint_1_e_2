@@ -7,7 +7,7 @@ import models.ComponenteMecanico;
  * aos componentes mecânicos das escadas rolantes, incluindo verificação de limites
  * de horas e geração de alertas preditivos.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Bruno Ventura
  * @version 1.0
  * @since 2026-10
  */

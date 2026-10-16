@@ -4,7 +4,7 @@ package models;
  * Define as linhas de transporte metroviário administradas pela Motiva,
  * servindo de referência para a localização das escadas rolantes e equipamentos.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Diogo Henrique Alves Magalhães
  * @version 1.0
  * @since 2026-10
  */

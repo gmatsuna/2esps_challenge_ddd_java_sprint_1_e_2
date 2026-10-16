@@ -4,7 +4,7 @@ package models;
  * Representa uma escada rolante instalada em uma estação administrada pela Motiva,
  * controlando seu sentido de operação, status operacional e localização.
  *
- * @author Gilberto Hideaki Matsunaga
+ * @author Diogo Henrique Alves Magalhães
  * @version 1.0
  * @since 2026-10
  */
